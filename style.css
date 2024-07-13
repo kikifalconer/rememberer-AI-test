@@ -102,3 +102,19 @@ button:hover {
     font-weight: bold;
     color: var(--primary-color);
 }
+.cell {
+    /* ... existing styles ... */
+    cursor: pointer;
+}
+
+.cell.selected {
+    background-color: #e6f3ff;
+}
+
+.cell.initial {
+    color: var(--primary-color);
+}
+
+.cell.conflicting {
+    background-color: #ffcccc;
+}
