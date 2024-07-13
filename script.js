@@ -92,6 +92,7 @@ class SudokuGame {
     constructor(difficulty) {
         this.generator = new SudokuGenerator();
         this.board = this.generator.generate(difficulty);
+        this.initialBoard = JSON.parse(JSON.stringify(this.board));
         this.solution = JSON.parse(JSON.stringify(this.board));
         this.generator.fillGrid(0, 0, this.solution);
         this.selectedCell = null;
@@ -118,7 +119,7 @@ class SudokuGame {
     placeNumber(num) {
         if (this.selectedCell) {
             const [row, col] = this.getCellPosition(this.selectedCell);
-            if (this.board[row][col] === 0) {
+            if (this.initialBoard[row][col] === 0) {
                 if (this.isValidMove(row, col, num)) {
                     this.board[row][col] = num;
                     this.selectedCell.textContent = num;
@@ -151,21 +152,25 @@ class SudokuGame {
             cell.classList.add('cell');
             cell.dataset.index = i;
             const [row, col] = this.getCellPosition(cell);
-            if (this.board[row][col] !== 0) {
-                cell.textContent = this.board[row][col];
+            if (this.initialBoard[row][col] !== 0) {
+                cell.textContent = this.initialBoard[row][col];
                 cell.classList.add('initial');
+            } else {
+                cell.addEventListener('click', () => this.selectCell(cell));
             }
-            cell.addEventListener('click', () => this.selectCell(cell));
             gameBoard.appendChild(cell);
         }
     }
 
     selectCell(cell) {
-        if (this.selectedCell) {
-            this.selectedCell.classList.remove('selected');
+        const [row, col] = this.getCellPosition(cell);
+        if (this.initialBoard[row][col] === 0) {
+            if (this.selectedCell) {
+                this.selectedCell.classList.remove('selected');
+            }
+            this.selectedCell = cell;
+            cell.classList.add('selected');
         }
-        this.selectedCell = cell;
-        cell.classList.add('selected');
     }
 
     startTimer() {
@@ -212,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('erase-btn').addEventListener('click', () => {
         if (game && game.selectedCell) {
             const [row, col] = game.getCellPosition(game.selectedCell);
-            if (game.board[row][col] !== 0) {
+            if (game.initialBoard[row][col] === 0) {
                 game.board[row][col] = 0;
                 game.selectedCell.textContent = '';
                 game.selectedCell.classList.remove('conflicting');
