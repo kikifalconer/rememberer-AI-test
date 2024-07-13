@@ -120,6 +120,7 @@ class SudokuGame {
             if (this.initialBoard[row][col] === 0) {
                 this.board[row][col] = num;
                 this.selectedCell.textContent = num !== 0 ? num : '';
+                console.log(`Placed number ${num} at [${row}, ${col}]`); // Debug log
                 if (this.checkWin()) {
                     this.endGame();
                 }
@@ -167,6 +168,7 @@ class SudokuGame {
     }
 
     showHint() {
+        console.log("showHint method called"); // New debug log
         let emptyCells = [];
         for (let row = 0; row < 9; row++) {
             for (let col = 0; col < 9; col++) {
@@ -175,6 +177,8 @@ class SudokuGame {
                 }
             }
         }
+
+        console.log("Empty cells:", emptyCells.length); // Debug log
 
         if (emptyCells.length === 0) {
             alert("No empty cells left!");
@@ -188,8 +192,13 @@ class SudokuGame {
         // Find the cell element and update it
         const cellIndex = row * 9 + col;
         const cellElement = document.querySelector(`.cell[data-index="${cellIndex}"]`);
-        cellElement.textContent = correctNumber;
-        cellElement.classList.add('hint');
+        if (cellElement) {
+            cellElement.textContent = correctNumber;
+            cellElement.classList.add('hint');
+            console.log(`Hint placed: ${correctNumber} at [${row}, ${col}]`); // Debug log
+        } else {
+            console.log(`Error: Could not find cell element for index ${cellIndex}`); // New debug log
+        }
 
         // Update the board
         this.board[row][col] = correctNumber;
@@ -242,6 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('show-hint').addEventListener('click', () => {
         if (game) {
             game.showHint();
+        } else {
+            alert("Please start a new game first.");
         }
     });
 
