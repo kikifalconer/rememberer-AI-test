@@ -97,15 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const numberButtons = document.querySelectorAll('#number-pad .num-btn');
-    numberButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (game) {
-                game.placeNumber(parseInt(button.dataset.num));
-            }
-        });
-    });
-
     document.addEventListener('keydown', (event) => {
         if (game && game.selectedCell) {
             const key = parseInt(event.key);
@@ -114,12 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (event.key === 'Backspace' || event.key === 'Delete') {
                 game.placeNumber(0);  // Erase the number
             }
-        }
-    });
-
-    document.getElementById('erase-btn').addEventListener('click', () => {
-        if (game) {
-            game.placeNumber(0);  // Erase the number
         }
     });
 
