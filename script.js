@@ -165,6 +165,39 @@ class SudokuGame {
     endGame() {
         alert('Congratulations! You solved the puzzle!');
     }
+
+    showHint() {
+        let emptyCells = [];
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
+                if (this.board[row][col] === 0) {
+                    emptyCells.push([row, col]);
+                }
+            }
+        }
+
+        if (emptyCells.length === 0) {
+            alert("No empty cells left!");
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const [row, col] = emptyCells[randomIndex];
+        const correctNumber = this.solution[row][col];
+
+        // Find the cell element and update it
+        const cellIndex = row * 9 + col;
+        const cellElement = document.querySelector(`.cell[data-index="${cellIndex}"]`);
+        cellElement.textContent = correctNumber;
+        cellElement.classList.add('hint');
+
+        // Update the board
+        this.board[row][col] = correctNumber;
+
+        if (this.checkWin()) {
+            this.endGame();
+        }
+    }
 }
 
 let game;
@@ -207,7 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('show-hint').addEventListener('click', () => {
-        alert('Hint functionality not yet implemented');
+        if (game) {
+            game.showHint();
+        }
     });
 
     // Start a new game when the page loads
