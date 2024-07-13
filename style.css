@@ -115,3 +115,8 @@ button:hover {
 .cell.conflicting {
     background-color: #ffcccc;
 }
+
+.cell.hint {
+    color: #0000FF; /* Blue color for hint numbers */
+    font-weight: bold;
+}
