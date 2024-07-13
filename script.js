@@ -97,6 +97,7 @@ class SudokuGame {
         this.selectedCell = null;
         this.timer = 0;
         this.timerInterval = null;
+        this.difficulty = difficulty;
     }
 
     isValidMove(row, col, num) {
@@ -114,7 +115,6 @@ class SudokuGame {
         return true;
     }
 
-    // New method to place a number
     placeNumber(num) {
         if (this.selectedCell) {
             const [row, col] = this.getCellPosition(this.selectedCell);
@@ -133,19 +133,16 @@ class SudokuGame {
         }
     }
 
-    // Helper method to get row and column from cell index
     getCellPosition(cell) {
         const index = parseInt(cell.dataset.index);
         return [Math.floor(index / 9), index % 9];
     }
 
-    // New method to start the game
     startGame() {
         this.renderBoard();
         this.startTimer();
     }
 
-    // New method to render the board
     renderBoard() {
         const gameBoard = document.getElementById('game-board');
         gameBoard.innerHTML = '';
@@ -163,7 +160,6 @@ class SudokuGame {
         }
     }
 
-    // New method to select a cell
     selectCell(cell) {
         if (this.selectedCell) {
             this.selectedCell.classList.remove('selected');
@@ -172,7 +168,6 @@ class SudokuGame {
         cell.classList.add('selected');
     }
 
-    // New method to start the timer
     startTimer() {
         this.timerInterval = setInterval(() => {
             this.timer++;
@@ -180,7 +175,6 @@ class SudokuGame {
         }, 1000);
     }
 
-    // New method to update the timer display
     updateTimerDisplay() {
         const minutes = Math.floor(this.timer / 60);
         const seconds = this.timer % 60;
@@ -188,7 +182,6 @@ class SudokuGame {
             `Time: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    // New method to end the game
     endGame() {
         clearInterval(this.timerInterval);
         alert('Congratulations! You solved the puzzle!');
@@ -196,7 +189,6 @@ class SudokuGame {
     }
 }
 
-// Game initialization
 let game;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -252,9 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Hint functionality not yet implemented');
         }
     });
-});
 
-// Automatically start a new game on page load
+    // Automatically start a new game on page load
     console.log("Starting new game...");
     game = new SudokuGame('medium');
     game.startGame();
+});
