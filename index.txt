@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Falconer Focus - Sudoku Game</title>
-    <style>
-        /* We'll add styles here later */
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Falconer Focus</h1>
-    <div id="game-container">
+    <div class="game-container">
+        <h1>Falconer Focus</h1>
         <div id="difficulty-selector">
             <button data-difficulty="easy">Easy</button>
             <button data-difficulty="medium">Medium</button>
             <button data-difficulty="hard">Hard</button>
         </div>
-        <canvas id="sudoku-board" width="450" height="450"></canvas>
+        <div id="game-board"></div>
         <div id="controls">
             <button id="new-game">New Game</button>
             <button id="check-solution">Check Solution</button>
             <button id="show-hint">Show Hint</button>
         </div>
-        <div id="timer">Time: 00:00</div>
     </div>
-    <script src="sudoku.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
