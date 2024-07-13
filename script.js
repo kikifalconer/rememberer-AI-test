@@ -67,3 +67,15 @@ document.getElementById('show-hint').addEventListener('click', () => {
 });
 
 // TODO: Implement keyboard and touch input handling
+function createGameBoard() {
+    const gameBoard = document.getElementById('game-board');
+    for (let i = 0; i < 81; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+        gameBoard.appendChild(cell);
+    }
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', createGameBoard);
