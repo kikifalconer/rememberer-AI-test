@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
  background-image: url("https://media1.giphy.com/media/3mMdHevrR3tVC/giphy.gif?cid=6c09b9523bz3xuacrfgilm0ni08q2uyk7ei0so420prpjes7&ep=v1_gifs_search&rid=giphy.gif&ct=g");
- background-color: #cccccc;
+ background-color: #ea3e57;
     color: var(--text-color);
     display: flex;
     justify-content: center;
