@@ -4,8 +4,6 @@ class SudokuGenerator {
     }
 
     generate(difficulty) {
-        // For simplicity, let's create a basic puzzle
-        // In a real implementation, this should generate a valid, unique Sudoku puzzle
         const numToRemove = {
             'easy': 30,
             'medium': 40,
@@ -15,7 +13,6 @@ class SudokuGenerator {
         this.solve(0, 0);
         const solution = JSON.parse(JSON.stringify(this.grid));
 
-        // Remove numbers to create the puzzle
         let removed = 0;
         while (removed < numToRemove) {
             const row = Math.floor(Math.random() * 9);
@@ -80,7 +77,7 @@ class SudokuGame {
     placeNumber(num) {
         if (this.selectedCell && num >= 0 && num <= 9) {
             const [row, col] = this.getCellPosition(this.selectedCell);
-            if (this.board[row][col] === 0) {
+            if (this.board[row][col] === 0 || !this.selectedCell.classList.contains('initial')) {
                 this.board[row][col] = num;
                 this.selectedCell.textContent = num !== 0 ? num : '';
                 this.checkConflicts(row, col);
@@ -108,9 +105,8 @@ class SudokuGame {
             if (this.board[row][col] !== 0) {
                 cell.textContent = this.board[row][col];
                 cell.classList.add('initial');
-            } else {
-                cell.addEventListener('click', () => this.selectCell(cell));
             }
+            cell.addEventListener('click', () => this.selectCell(cell));
             gameBoard.appendChild(cell);
         }
     }
