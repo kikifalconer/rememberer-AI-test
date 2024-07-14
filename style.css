@@ -1,10 +1,3 @@
-:root {
-    --primary-color: #8B4513;  /* Saddle Brown */
-    --secondary-color: #4682B4;  /* Steel Blue */
-    --background-color: #F5DEB3;  /* Wheat */
-    --text-color: #2F4F4F;  /* Dark Slate Gray */
-    --button-hover: #ea3e57;  /* Peru */
-}
 
 body {
     font-family: Arial, sans-serif;
