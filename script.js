@@ -1,14 +1,78 @@
 class SudokuGenerator {
-    // Assume this class is implemented correctly
-    // It should have methods to generate and solve Sudoku puzzles
+    constructor() {
+        this.grid = Array(9).fill().map(() => Array(9).fill(0));
+    }
+
+    generate(difficulty) {
+        // For simplicity, let's create a basic puzzle
+        // In a real implementation, this should generate a valid, unique Sudoku puzzle
+        const numToRemove = {
+            'easy': 30,
+            'medium': 40,
+            'hard': 50
+        }[difficulty];
+
+        this.solve(0, 0);
+        const solution = JSON.parse(JSON.stringify(this.grid));
+
+        // Remove numbers to create the puzzle
+        let removed = 0;
+        while (removed < numToRemove) {
+            const row = Math.floor(Math.random() * 9);
+            const col = Math.floor(Math.random() * 9);
+            if (this.grid[row][col] !== 0) {
+                this.grid[row][col] = 0;
+                removed++;
+            }
+        }
+
+        return { puzzle: this.grid, solution: solution };
+    }
+
+    solve(row, col) {
+        if (col === 9) {
+            row++;
+            col = 0;
+        }
+        if (row === 9) return true;
+
+        if (this.grid[row][col] !== 0) return this.solve(row, col + 1);
+
+        for (let num = 1; num <= 9; num++) {
+            if (this.isValid(row, col, num)) {
+                this.grid[row][col] = num;
+                if (this.solve(row, col + 1)) return true;
+                this.grid[row][col] = 0;
+            }
+        }
+
+        return false;
+    }
+
+    isValid(row, col, num) {
+        for (let i = 0; i < 9; i++) {
+            if (this.grid[row][i] === num) return false;
+            if (this.grid[i][col] === num) return false;
+        }
+
+        const boxRow = Math.floor(row / 3) * 3;
+        const boxCol = Math.floor(col / 3) * 3;
+        for (let i = boxRow; i < boxRow + 3; i++) {
+            for (let j = boxCol; j < boxCol + 3; j++) {
+                if (this.grid[i][j] === num) return false;
+            }
+        }
+
+        return true;
+    }
 }
 
 class SudokuGame {
     constructor(difficulty) {
-        this.generator = new SudokuGenerator();
-        this.board = this.generator.generate(difficulty);
-        this.solution = JSON.parse(JSON.stringify(this.board));
-        this.generator.fillGrid(0, 0, this.solution);
+        const generator = new SudokuGenerator();
+        const { puzzle, solution } = generator.generate(difficulty);
+        this.board = puzzle;
+        this.solution = solution;
         this.selectedCell = null;
         this.difficulty = difficulty;
     }
@@ -87,24 +151,19 @@ class SudokuGame {
     }
 
     checkConflicts(row, col) {
+        this.clearHighlights();
         const num = this.board[row][col];
         if (num === 0) return;
 
-        // Check row
         for (let i = 0; i < 9; i++) {
             if (i !== col && this.board[row][i] === num) {
                 this.highlightConflict(row, i);
             }
-        }
-
-        // Check column
-        for (let i = 0; i < 9; i++) {
             if (i !== row && this.board[i][col] === num) {
                 this.highlightConflict(i, col);
             }
         }
 
-        // Check 3x3 box
         const boxRow = Math.floor(row / 3) * 3;
         const boxCol = Math.floor(col / 3) * 3;
         for (let i = boxRow; i < boxRow + 3; i++) {
