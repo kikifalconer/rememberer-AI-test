@@ -1,5 +1,6 @@
 class SudokuGenerator {
-    // ... [Keep the SudokuGenerator class as is]
+    // Assume this class is implemented correctly
+    // It should have methods to generate and solve Sudoku puzzles
 }
 
 class SudokuGame {
@@ -13,11 +14,12 @@ class SudokuGame {
     }
 
     placeNumber(num) {
-        if (this.selectedCell) {
+        if (this.selectedCell && num >= 0 && num <= 9) {
             const [row, col] = this.getCellPosition(this.selectedCell);
             if (this.board[row][col] === 0) {
                 this.board[row][col] = num;
                 this.selectedCell.textContent = num !== 0 ? num : '';
+                this.checkConflicts(row, col);
             }
         }
     }
@@ -83,6 +85,78 @@ class SudokuGame {
             this.board[row][col] = correctNumber;
         }
     }
+
+    checkConflicts(row, col) {
+        const num = this.board[row][col];
+        if (num === 0) return;
+
+        // Check row
+        for (let i = 0; i < 9; i++) {
+            if (i !== col && this.board[row][i] === num) {
+                this.highlightConflict(row, i);
+            }
+        }
+
+        // Check column
+        for (let i = 0; i < 9; i++) {
+            if (i !== row && this.board[i][col] === num) {
+                this.highlightConflict(i, col);
+            }
+        }
+
+        // Check 3x3 box
+        const boxRow = Math.floor(row / 3) * 3;
+        const boxCol = Math.floor(col / 3) * 3;
+        for (let i = boxRow; i < boxRow + 3; i++) {
+            for (let j = boxCol; j < boxCol + 3; j++) {
+                if (i !== row && j !== col && this.board[i][j] === num) {
+                    this.highlightConflict(i, j);
+                }
+            }
+        }
+    }
+
+    highlightConflict(row, col) {
+        const cellIndex = row * 9 + col;
+        const cell = document.querySelector(`.cell[data-index="${cellIndex}"]`);
+        if (cell) {
+            cell.classList.add('conflicting');
+        }
+    }
+
+    clearHighlights() {
+        document.querySelectorAll('.cell').forEach(cell => {
+            cell.classList.remove('conflicting');
+        });
+    }
+
+    checkSolution() {
+        for (let row = 0; row < 9; row++) {
+            for (let col = 0; col < 9; col++) {
+                if (this.board[row][col] !== this.solution[row][col]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    moveSelection(direction) {
+        if (!this.selectedCell) return;
+        
+        let index = parseInt(this.selectedCell.dataset.index);
+        switch(direction) {
+            case 'ArrowUp': index -= 9; break;
+            case 'ArrowDown': index += 9; break;
+            case 'ArrowLeft': index--; break;
+            case 'ArrowRight': index++; break;
+        }
+        
+        if (index >= 0 && index < 81) {
+            const newCell = document.querySelector(`.cell[data-index="${index}"]`);
+            if (newCell) this.selectCell(newCell);
+        }
+    }
 }
 
 let game;
@@ -103,6 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 game.placeNumber(key);
             } else if (event.key === 'Backspace' || event.key === 'Delete') {
                 game.placeNumber(0);
+            } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+                game.moveSelection(event.key);
             }
         }
     });
@@ -116,16 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('check-solution').addEventListener('click', () => {
         if (game) {
-            let correct = true;
-            for (let row = 0; row < 9; row++) {
-                for (let col = 0; col < 9; col++) {
-                    if (game.board[row][col] !== game.solution[row][col]) {
-                        correct = false;
-                        break;
-                    }
-                }
-                if (!correct) break;
-            }
+            const correct = game.checkSolution();
             alert(correct ? 'Congratulations! The solution is correct!' : 'The current solution is not correct. Keep trying!');
         }
     });
