@@ -18,10 +18,6 @@ body {
     margin: 0;
 }
 
-
-
-
-
 .game-container {
     background-color: white;
     padding: 20px;
@@ -55,14 +51,14 @@ button:hover {
 }
 
 #game-board {
-    display: grid;
+display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 1px;
-    margin: 20px 0;
-    background-color: var(--text-color);
-    padding: 1px;
+    grid-gap: 1px;
+    background-color: #000;
+    border: 2px solid #000;
     width: 450px;
     height: 450px;
+    margin: 20px auto;
 }
 
 .cell {
@@ -87,6 +83,25 @@ button:hover {
 .cell:nth-child(n+46):nth-child(-n+54) {
     border-bottom: 2px solid var(--text-color);
 }
+.cell.initial {
+    font-weight: bold;
+    color: #000;
+}
+
+.cell.initial {
+    color: var(--primary-color);
+}
+
+.cell.hint {
+    color: #0000ff;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 #number-pad {
     display: grid;
@@ -103,19 +118,6 @@ button:hover {
     margin-bottom: 20px;
 }
 
-#timer {
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.cell.selected {
-    background-color: #e6f3ff;
-}
-
-.cell.initial {
-    color: var(--primary-color);
-}
 
 .cell.conflicting {
     background-color: #ffcccc;
