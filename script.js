@@ -193,7 +193,26 @@ class SudokuGame {
                 }
             }
         }
+        this.showCongratulations();
         return true;
+    }
+
+    showCongratulations() {
+        const congratsModal = document.createElement('div');
+        congratsModal.className = 'congrats-modal';
+        congratsModal.innerHTML = `
+            <div class="congrats-content">
+                <h2>Congratulations!</h2>
+                <p>You've solved the puzzle!</p>
+                <img src="https://i.pinimg.com/originals/44/1a/d4/441ad464bf8681ececd5bb41230142d6.gif" alt="Congratulations">
+                <button id="close-congrats">Close</button>
+            </div>
+        `;
+        document.body.appendChild(congratsModal);
+
+        document.getElementById('close-congrats').addEventListener('click', () => {
+            congratsModal.remove();
+        });
     }
 
     moveSelection(direction) {
@@ -248,7 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('check-solution').addEventListener('click', () => {
         if (game) {
             const correct = game.checkSolution();
-            alert(correct ? 'Congratulations! The solution is correct!' : 'The current solution is not correct. Keep trying!');
+            if (!correct) {
+                alert('The current solution is not correct. Keep trying!');
+            }
         }
     });
 
