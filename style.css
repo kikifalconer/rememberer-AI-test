@@ -123,3 +123,8 @@ button:hover {
         font-size: 16px;
     }
 }
+
+.cell.selected {
+    background-color: #e0e0ff;
+    box-shadow: 0 0 5px #0000ff;
+}
