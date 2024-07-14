@@ -1,72 +1,5 @@
 class SudokuGenerator {
-    constructor() {
-        this.grid = Array(9).fill().map(() => Array(9).fill(0));
-    }
-
-    generate(difficulty) {
-        this.fillGrid(0, 0);
-        this.removeNumbers(difficulty);
-        return this.grid;
-    }
-
-    fillGrid(row, col) {
-        if (col === 9) {
-            row++;
-            col = 0;
-            if (row === 9) return true;
-        }
-
-        if (this.grid[row][col] !== 0) return this.fillGrid(row, col + 1);
-
-        const numbers = this.shuffleArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-        for (let num of numbers) {
-            if (this.isValid(row, col, num)) {
-                this.grid[row][col] = num;
-                if (this.fillGrid(row, col + 1)) return true;
-                this.grid[row][col] = 0;
-            }
-        }
-
-        return false;
-    }
-
-    isValid(row, col, num) {
-        for (let x = 0; x < 9; x++) {
-            if (this.grid[row][x] === num || this.grid[x][col] === num) return false;
-        }
-
-        const boxRow = Math.floor(row / 3) * 3;
-        const boxCol = Math.floor(col / 3) * 3;
-
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (this.grid[boxRow + i][boxCol + j] === num) return false;
-            }
-        }
-
-        return true;
-    }
-
-    removeNumbers(difficulty) {
-        const cellsToRemove = 81 - (difficulty === 'easy' ? 35 : difficulty === 'medium' ? 30 : 25);
-        for (let i = 0; i < cellsToRemove; i++) {
-            let row, col;
-            do {
-                row = Math.floor(Math.random() * 9);
-                col = Math.floor(Math.random() * 9);
-            } while (this.grid[row][col] === 0);
-            this.grid[row][col] = 0;
-        }
-    }
-
-    shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
+    // ... [Keep the SudokuGenerator class as is]
 }
 
 class SudokuGame {
@@ -203,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Start a new game when the page loads
     game = new SudokuGame('medium');
     game.startGame();
 });
