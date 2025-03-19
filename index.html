@@ -3,26 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falconer Focus - Sudoku Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>The Rememberer - Matías de Stefano</title>
+    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://use.typekit.net/aps1zfj.css">
 </head>
 <body>
-    <main>
-    <div class="game-container">
-        <h1>FALCONER'S FOCUS</h1>
-        <div id="difficulty-selector">
-<button data-difficulty="easy" aria-label="Easy difficulty">Easy</button>
-<button data-difficulty="medium" aria-label="Medium difficulty">Medium</button>
-<button data-difficulty="hard" aria-label="Hard difficulty">Hard</button>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="therememberer-logo.png" alt="The Rememberer Logo">
+            </a>
         </div>
-        <div id="game-board"></div>
-        <div id="controls">
-            <button id="new-game">New Game</button>
-            <button id="check-solution">Check Solution</button>
-            <button id="show-hint">Show Hint</button>
+        <nav>
+            <ul>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#store">STORE</a></li>
+                <li><a href="#my-library">MY LIBRARY</a></li>
+                <li class="language-dropdown">
+                <div class="selected-language">ENG <i class="fas fa-chevron-down"></i></div>
+                <ul class="dropdown-menu">
+                    <li><a href="#eng">English</a></li>
+                    <li><a href="#es">Español</a></li>
+                    <li><a href="#fr">Français</a></li>
+                    <li><a href="#de">Deutsch</a></li>
+                    <li><a href="#pt">Português</a></li>
+                </ul>
+            </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="rememberer-title-hero.png" alt="The Rememberer">
+            </div>
+            <div class="cta">
+                <button class="btn-primary">WATCH FIRST EPISODE FREE</button>
+            </div>
         </div>
-    </div>
-        </main>
-    <script src="script.js"></script>
+    </section>
+
+    <section class="journey">
+        <div class="divider"></div>
+        <h2>A 13-PART JOURNEY</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <button class="btn-secondary">WATCH FIRST EPISODE FREE</button>
+    </section>
+
+    <section class="watch-free">
+        <div class="content">
+            <h2>WATCH FREE NOW</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            <div class="video-placeholder">
+                <img src="/api/placeholder/600/340" alt="El Recordador Video Thumbnail">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <button class="btn-secondary">WATCH FIRST EPISODE FREE</button>
+        </div>
+    </section>
+
+    <section class="purchase">
+        <h2>PURCHASE:</h2>
+        <h3>THE 13 EPISODES + FILMS</h3>
+        <div class="divider-double"></div>
+        
+        <div class="pricing-cards">
+            <div class="card">
+                <h3>Watch All 13 Episodes:</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="pricing">
+                    <div class="price">
+                        <p>EARLY BIRD — $33</p>
+                        <p>REGULAR PRICE — $66</p>
+                    </div>
+                    <h4>GET THE SERIES</h4>
+                </div>
+                <button class="btn-primary">BUY NOW</button>
+            </div>
+            
+            <div class="card">
+                <h3>All-Access Pass:</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="pricing">
+                    <div class="price">
+                        <p>EARLY BIRD — $99</p>
+                        <p>REGULAR PRICE — $164</p>
+                    </div>
+                    <h4>EPISODES + FILM BUNDLE</h4>
+                </div>
+                <button class="btn-primary">BUY NOW</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="matias">
+        <h2>MATÍAS <span>de</span> STEFANO</h2>
+    </section>
+
+    <section class="rememberer">
+        <h2>THE REMEMBERER</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    </section>
+
+    <section class="making-of">
+        <h3>Making Of:</h3>
+        <h2>THE FILM</h2>
+        <div class="crowd-image">
+            <img src="/api/placeholder/800/400" alt="Crowd at event">
+        </div>
+    </section>
+
+    <section class="journey-details">
+        <h2>THE JOURNEY</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    </section>
+
+    <section class="faq">
+        <h2>FAQ</h2>
+        <div class="faq-item">
+            <div class="question">
+                <h3>HOW DO I ACCESS MY EPISODES + FILM?</h3>
+                <span class="toggle">+</span>
+            </div>
+            <div class="answer hidden">
+                <p>Answer content goes here.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">
+                <h3>CAN I DOWNLOAD THE EPISODES / FILM?</h3>
+                <span class="toggle">+</span>
+            </div>
+            <div class="answer hidden">
+                <p>Answer content goes here.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">
+                <h3>HOW LONG WILL I HAVE THE EPISODES + FILM?</h3>
+                <span class="toggle">+</span>
+            </div>
+            <div class="answer hidden">
+                <p>Answer content goes here.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">
+                <h3>I'M HAVING TROUBLE VIEWING THE EPISODES.</h3>
+                <span class="toggle">+</span>
+            </div>
+            <div class="answer hidden">
+                <p>Answer content goes here.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">
+                <h3>CAN I HOST A WATCH PARTY?</h3>
+                <span class="toggle">+</span>
+            </div>
+            <div class="answer hidden">
+                <p>Answer content goes here.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <div class="left">
+                <a href="#">AFFILIATE LOG-IN</a>
+                <a href="#">CONTACT US</a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="right">
+                <a href="#">TERMS</a> | <a href="#">PRIVACY POLICY</a> | <a href="#">COPYRIGHT 2025 THE REMEMBERERS</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggling
+        document.querySelectorAll('.faq-item .question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const toggle = item.querySelector('.toggle');
+                
+                answer.classList.toggle('hidden');
+                toggle.textContent = answer.classList.contains('hidden') ? '+' : '-';
+            });
+        });
+
+        // Alternative language dropdown with click instead of hover if needed
+        /*
+        document.querySelector('.language-dropdown .selected-language').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.querySelector('.dropdown-menu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('rotate');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-dropdown')) {
+                document.querySelector('.dropdown-menu').classList.remove('active');
+                document.querySelector('.selected-language i').classList.remove('rotate');
+            }
+        });
+        */
+    </script>
 </body>
 </html>
