@@ -285,7 +285,14 @@ nav ul li a:hover {
 
 .watch-free .text-content {
     flex: 1;
-    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.watch-free .text-wrapper {
+    text-align: center;
+    max-width: 400px;
 }
 
 .watch-free .video-container {
