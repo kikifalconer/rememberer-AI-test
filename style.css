@@ -272,23 +272,36 @@ nav ul li a:hover {
 .watch-free {
     padding: 5rem 2rem;
     background-color: var(--light-gray);
-    text-align: center;
 }
 
 .watch-free .content {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.watch-free .text-content {
+    flex: 1;
+    text-align: left;
+}
+
+.watch-free .video-container {
+    flex: 1;
 }
 
 .watch-free h2 {
     font-size: 1.5rem;
     letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
 .video-placeholder {
-    margin: 2rem 0;
     position: relative;
     border: 1px solid #ccc;
+    width: 100%;
 }
 
 .play-button {
