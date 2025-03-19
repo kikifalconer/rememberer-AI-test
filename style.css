@@ -16,6 +16,7 @@
 body {
     color: var(--primary-color);
     line-height: 1.6;
+        background-color: var(--accent-color);
 }
 
 h1, h2, h3, h4 {
@@ -98,7 +99,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--accent-color);
     color: var(--secondary-color);
     z-index: 1000;
 }
@@ -156,9 +157,7 @@ nav ul li a:hover {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+    background-color: var(--accent-color);
     width: 120px;
     max-height: 0;
     overflow: hidden;
@@ -192,7 +191,7 @@ nav ul li a:hover {
 }
 
 .dropdown-menu li a:hover {
-    background-color: var(--light-gray);
+    background-color: var(--accent-color);
     opacity: 1;
 }
 
@@ -215,7 +214,7 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 70%;
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -260,7 +259,7 @@ nav ul li a:hover {
 /* Watch Free Section */
 .watch-free {
     padding: 5rem 2rem;
-    background-color: var(--light-gray);
+    background-color: var(--accent-color);
 }
 
 .watch-free .content {
