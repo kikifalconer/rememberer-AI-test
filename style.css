@@ -1,6 +1,6 @@
 /* General Styles */
 :root {
-    --primary-color: #000;
+    --primary-color: #33344F;
     --secondary-color: #fff;
     --accent-color: #D7CDC7;
     --light-gray: #f5f5f5;
@@ -154,6 +154,7 @@ nav ul li {
     letter-spacing: 1px;
         font-family: "futura-pt", sans-serif;
         font-weight: 600;
+    color: var(--primary-color);
 }
 
 nav ul li a {
@@ -226,7 +227,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 70vh;
     background-image: url('Rememberer-Hero.jpg');
     background-size: cover;
     background-position: center;
@@ -243,7 +244,7 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: auto;
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -289,7 +290,7 @@ nav ul li a:hover {
 /* Watch Free Section */
 .watch-free {
     padding: 5rem 2rem;
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
 }
 
 .watch-free .content {
@@ -390,7 +391,7 @@ nav ul li a:hover {
 /* Matias Section */
 .matias {
     height: 70vh;
-    background-image: url('Rememberer-still-crowd.jpg');
+    background-image: url('skyRememberer.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -399,16 +400,7 @@ nav ul li a:hover {
     color: var(--secondary-color);
 }
 
-.matias h2 {
-    font-size: 2.5rem;
-    letter-spacing: 5px;
-    text-align: center;
-}
 
-.matias h2 span {
-    font-style: italic;
-    font-weight: 300;
-}
 
 /* Rememberer Section */
 .rememberer {
@@ -426,21 +418,17 @@ nav ul li a:hover {
 
 /* Making Of Section */
 .making-of {
-    padding: 5rem 2rem;
-    text-align: center;
-    background-color: var(--accent-color);
+height: 70vh;
+    background-image: url('Rememberer-still-crowd.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
 }
 
-.making-of h3 {
-    font-size: 1rem;
-    font-weight: 400;
-}
 
-.making-of h2 {
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-}
 
 .crowd-image {
     margin-top: 2rem;
