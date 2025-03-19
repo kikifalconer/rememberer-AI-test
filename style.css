@@ -77,26 +77,15 @@ img {
     color: var(--accent-color);
 }
 
-.divider {
-    width: 40px;
-    height: 2px;
-    background-color: #000;
-    margin: 1.5rem auto;
-}
-
-.divider-double {
+.symbol-divider {
     display: flex;
     justify-content: center;
-    gap: 20px;
     margin: 1.5rem auto;
 }
 
-.divider-double::before,
-.divider-double::after {
-    content: "";
-    width: 40px;
-    height: 2px;
-    background-color: #000;
+.symbol-image {
+    width: 100px;
+    height: auto;
 }
 
 /* Header Styles */
