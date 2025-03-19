@@ -199,7 +199,7 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background-image: url('/api/placeholder/1920/1080');
+    background-image: url('Rememberer-Hero.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -231,7 +231,7 @@ nav ul li a:hover {
 
 .hero-image {
     margin-bottom: 2rem;
-    width: 40%;
+    width: 100%;
     max-width: 320px;
 }
 
